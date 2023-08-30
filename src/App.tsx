@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PlantCard from './PlantCard';
+import Calendar from './Calendar';
 
 import styles from './App.module.scss';
 
@@ -25,7 +26,10 @@ const App: React.FC = () => {
       <h1 className={styles['page-heading']}>Thrive</h1>
       <div className={styles["plant-list"]}>
         {plants.map((plant, index) => (
+          <div className={styles["row"]}>
             <PlantCard key={index} name={plant.name} lastWatered={plant.lastWatered} />
+            <Calendar />
+          </div>
         ))}
       </div>
       <button className={styles['add-plant-button']} onClick={addPlant}>Add New Plant</button>

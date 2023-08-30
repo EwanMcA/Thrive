@@ -54,3 +54,8 @@ html {
 .add-plant-button:hover {
   background-color: #45a049;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}

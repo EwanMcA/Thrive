@@ -1,0 +1,30 @@
+diner {
+  border: 1px solid #ccc;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.days-of-week {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.day-of-week {
+  flex: 1;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar-days {
+  display: flex;
+  flex-wrap: nowrap; /* This keeps the days in a single line */
+  overflow-x: auto; /* Enable horizontal scrolling if necessary */
+}
+
+.calendar-day {
+  flex: 1;
+  padding: 8px;
+  text-align: center;
+}

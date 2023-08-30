@@ -1,0 +1,18 @@
+.calendar-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  padding: 16px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.calendar-day {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 24px 8px;
+  text-align: center;
+  width: 32px;
+}
