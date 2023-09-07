@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './App.module.scss';
+import styles from './PlantCard.module.scss';
 
 type PlantCardProps = { name: string; lastWatered: string; }
 

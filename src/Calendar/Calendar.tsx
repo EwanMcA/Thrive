@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import styles from './Calendar.module.scss';
 
-const Calendar = () => {
-  const [ dayRange, setDayRange ] = useState(14);
+const Calendar: React.FC = () => {
+  const [ dayRange, ] = useState(14);
   const currentDate = new Date();
   const limitDate = new Date();
   limitDate.setDate(currentDate.getDate() + dayRange);
