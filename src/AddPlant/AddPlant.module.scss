@@ -35,3 +35,49 @@
     color: #ff0000; /* Change color on hover if desired */
   }
 }
+
+.modal label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal input[type="text"],
+.modal input[type="date"],
+.modal input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.modal button {
+  background-color: #dd7373;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button[type="submit"] {
+  background-color: #4caf50;
+}
+
+.modal button[type="submit"]:hover {
+  background-color: darken(#4caf50, 10%);
+}
+
+.modal button[type="button"] {
+  background-color: #ccc;
+  margin-right: 10px;
+}
+.modal input[type="number"] {
+  width: 20%;
+}
+
+.modal button[type="button"]:hover {
+  background-color: #999;
+}

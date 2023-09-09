@@ -1,55 +1,85 @@
-import React, { useEffect, useState } from 'react';
-import AddPlant from './AddPlant';
-import PlantCard from './PlantCard';
-import Calendar from './Calendar';
+import React, { useEffect, useState } from "react";
+import uuid from "react-uuid";
 
-import styles from './App.module.scss';
+import AddPlant from "./AddPlant";
+import PlantCard from "./PlantCard";
+import Calendar from "./Calendar";
+
+import styles from "./App.module.scss";
 
 type Plant = {
   name: string;
   lastWatered: string;
-}
+};
 
 const App: React.FC = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
   const [showAddPlant, setShowAddPlant] = useState(false);
+  const storePlants = (plantState: Plant[]) =>
+    localStorage.setItem("plants", JSON.stringify(plantState));
 
   useEffect(() => {
-    const storedPlants = localStorage.getItem('plants');
+    const storedPlants = localStorage.getItem("plants");
     if (storedPlants) {
       try {
         const parsedPlants = JSON.parse(storedPlants);
         setPlants(parsedPlants);
       } catch (error) {
-        console.error('Error parsing JSON from local storage:', error);
+        console.error("Error parsing JSON from local storage:", error);
       }
     }
   }, []);
 
-  const addPlant = () => {
+  const addPlant = (name: string, lastWatered: Date, waterFrequency) => {
     const newPlant: Plant = {
-      name: `New Plant ${plants.length + 1}`,
-      lastWatered: new Date().toLocaleDateString(),
+      id: uuid(),
+      name: name,
+      lastWatered: lastWatered,
+      waterFrequency: waterFrequency,
     };
     const plantState = [...plants, newPlant];
     setPlants(plantState);
-    localStorage.setItem('plants', JSON.stringify(plantState));
+    storePlants(plantState);
     setShowAddPlant(false);
+  };
+
+  const deletePlant = (id) => {
+    const plantState = plants.filter((plant) => plant.id !== id);
+    setPlants(plantState);
+    storePlants(plantState);
   };
 
   return (
     <div className={styles.App}>
-      <h1 className={styles['page-heading']}>Thrive</h1>
+      <h1 className={styles["page-heading"]}>Thrive</h1>
       <div className={styles["plant-list"]}>
         {plants.map((plant, index) => (
-          <div className={styles["row"]}>
-            <PlantCard key={index} name={plant.name} lastWatered={plant.lastWatered} />
+          <div key={index} className={styles["row"]}>
+            <PlantCard
+              name={plant.name}
+              lastWatered={plant.lastWatered}
+              waterFrequency={plant.waterFrequency}
+              id={plant.id}
+              onDelete={(id) => deletePlant(id)}
+            />
             <Calendar />
           </div>
         ))}
       </div>
-      <button className={styles['add-plant-button']} onClick={() => setShowAddPlant(true)}>Add New Plant</button>
-      { showAddPlant && (<AddPlant onClose={() => addPlant()} />) }
+      <button
+        className={styles["add-plant-button"]}
+        onClick={() => setShowAddPlant(true)}
+      >
+        Add New Plant
+      </button>
+      {showAddPlant && (
+        <AddPlant
+          onClose={() => setShowAddPlant(false)}
+          onSubmit={(name, lastWatered, waterFrequency) =>
+            addPlant(name, lastWatered, waterFrequency)
+          }
+        />
+      )}
     </div>
   );
 };

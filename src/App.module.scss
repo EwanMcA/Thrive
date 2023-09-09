@@ -1,5 +1,5 @@
 html {
-  background-image: url('./monstera.jpg');
+  background-image: url("./monstera.jpg");
   background-repeat: no-repeat;
   background-size: 40%;
   background-position: top right;
@@ -31,7 +31,6 @@ html {
   gap: 1rem;
   margin: 2rem 0;
 }
-
 
 .add-plant-button {
   background-color: #4caf50;

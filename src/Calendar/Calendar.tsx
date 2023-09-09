@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import styles from './Calendar.module.scss';
+import styles from "./Calendar.module.scss";
 
 const Calendar: React.FC = () => {
-  const [ dayRange, ] = useState(14);
+  const [dayRange] = useState(14);
   const currentDate = new Date();
   const limitDate = new Date();
   limitDate.setDate(currentDate.getDate() + dayRange);
@@ -17,7 +17,7 @@ const Calendar: React.FC = () => {
       calendarDays.push(
         <div className={styles["calendar-day"]} key={day}>
           {renderDate.getDate()}
-        </div>
+        </div>,
       );
     }
 
@@ -25,9 +25,7 @@ const Calendar: React.FC = () => {
   };
 
   return (
-    <div className={styles["calendar-container"]}>
-      {renderCalendarDays()}
-    </div>
+    <div className={styles["calendar-container"]}>{renderCalendarDays()}</div>
   );
 };
 

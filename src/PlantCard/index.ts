@@ -1,1 +1,1 @@
-export { default } from './PlantCard.tsx';
+export { default } from "./PlantCard.tsx";
