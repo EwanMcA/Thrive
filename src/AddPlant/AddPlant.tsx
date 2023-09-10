@@ -13,7 +13,7 @@ const AddPlant: React.FC<AddPlantProps> = ({ onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(plantName, lastWateredDate, wateringFrequency);
+    onSubmit(plantName, Date.parse(lastWateredDate), wateringFrequency);
   };
 
   const handleLastWateredChange = (inputDate) => {

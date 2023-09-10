@@ -49,6 +49,13 @@ const App: React.FC = () => {
     storePlants(plantState);
   };
 
+  const waterPlant = (id) => {
+    const plantState = [...plants];
+    plantState.find((p) => p.id == id)["lastWatered"] = Date.now();
+    setPlants(plantState);
+    storePlants(plantState);
+  };
+
   return (
     <div className={styles.App}>
       <h1 className={styles["page-heading"]}>Thrive</h1>
@@ -61,8 +68,12 @@ const App: React.FC = () => {
               waterFrequency={plant.waterFrequency}
               id={plant.id}
               onDelete={(id) => deletePlant(id)}
+              onWater={(id) => waterPlant(id)}
             />
-            <Calendar />
+            <Calendar
+              lastWatered={plant.lastWatered}
+              waterFrequency={plant.waterFrequency}
+            />
           </div>
         ))}
       </div>

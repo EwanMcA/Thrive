@@ -10,15 +10,31 @@ const PlantCard: React.FC<PlantCardProps> = ({
   waterFrequency,
   id,
   onDelete,
+  onWater,
 }) => {
   return (
     <div className={styles["plant-card"]}>
       <h2>{name}</h2>
-      <p>Last watered</p>
-      <p>{lastWatered}</p>
-      <p>Water every</p>
+      <p>
+        <u>Last watered</u>
+      </p>
+      <p>
+        {new Date(lastWatered).toLocaleDateString(undefined, {
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+        })}
+      </p>
+      <p>
+        <u>Water every</u>
+      </p>
       <p>{waterFrequency} days</p>
-      <button onClick={() => onDelete(id)}>x</button>
+      <button className={styles.water} onClick={() => onWater(id)}>
+        W
+      </button>
+      <button className={styles.delete} onClick={() => onDelete(id)}>
+        x
+      </button>
     </div>
   );
 };
