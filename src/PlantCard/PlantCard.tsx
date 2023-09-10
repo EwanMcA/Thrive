@@ -29,9 +29,7 @@ const PlantCard: React.FC<PlantCardProps> = ({
         <u>Water every</u>
       </p>
       <p>{waterFrequency} days</p>
-      <button className={styles.water} onClick={() => onWater(id)}>
-        W
-      </button>
+      <button className={styles.water} onClick={() => onWater(id)} />
       <button className={styles.delete} onClick={() => onDelete(id)}>
         x
       </button>

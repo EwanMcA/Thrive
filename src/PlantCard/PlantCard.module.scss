@@ -1,11 +1,15 @@
 .plant-card {
   position: relative;
-  background-color: white;
+  background-color: #9f9;
   border: 1px solid #ddd;
   padding: 8px 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-width: 10vw;
+  min-width: 12vw;
+
+  h2 {
+    max-width: 8vw;
+  }
 }
 
 .delete {
@@ -23,16 +27,19 @@
 }
 
 .water {
-  padding: 12px;
+  padding: 24px;
   position: absolute;
   top: 12px;
   right: 12px;
-  background-color: #4473dd;
+  background: url('./watering_can.png');
+  background-size: cover;
   border: none;
   border-radius: 4px;
   color: white;
 
   &:hover {
-    background-color: darken(#4473dd, 10%);
+    background: url('./watering_can_active.png');
+    background-size: cover;
+    box-shadow: 0px 0px 1px 1px white;
   }
 }

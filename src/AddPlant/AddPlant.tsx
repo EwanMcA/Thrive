@@ -31,12 +31,13 @@ const AddPlant: React.FC<AddPlantProps> = ({ onClose, onSubmit }) => {
   return (
     <div className={styles["modal-overlay"]}>
       <div className={styles["modal"]}>
+        <h2>Tell us about your new plant!</h2>
         <button className={styles["close-button"]} onClick={onClose}>
           X
         </button>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="plantName">Plant Name:</label>
+        <div className={styles["form-container"]}>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="plantName">Name</label>
             <input
               type="text"
               id="plantName"
@@ -44,9 +45,7 @@ const AddPlant: React.FC<AddPlantProps> = ({ onClose, onSubmit }) => {
               onChange={(e) => setPlantName(e.target.value)}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="lastWateredDate">Last Watered Date:</label>
+            <label htmlFor="lastWateredDate">Last Watered Date</label>
             <input
               type="date"
               id="lastWateredDate"
@@ -54,9 +53,7 @@ const AddPlant: React.FC<AddPlantProps> = ({ onClose, onSubmit }) => {
               onChange={(e) => handleLastWateredChange(e.target.value)}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="wateringFrequency">Water every (in days):</label>
+            <label htmlFor="wateringFrequency">Water every (in days)</label>
             <input
               type="number"
               id="wateringFrequency"
@@ -64,14 +61,9 @@ const AddPlant: React.FC<AddPlantProps> = ({ onClose, onSubmit }) => {
               onChange={(e) => handleFrequencyChange(e.target.value)}
               required
             />
-          </div>
-          <div>
-            <button type="submit">Save</button>
-            <button type="button" onClick={() => onClose}>
-              Cancel
-            </button>
-          </div>
-        </form>
+            <button className={styles.save} type="submit">Save</button>
+          </form>
+        </div>
       </div>
     </div>
   );
